@@ -1,13 +1,13 @@
 const fs = require('fs');
-const dir = `${__dirname}\\secret-folder`;
-console.log(`${dir}\\data.csv`);
+const path = require('path');
+const dir = path.join(__dirname, 'secret-folder');
 fs.readdir(dir, (err, files) => {
   if (err) {
     console.log(err);
     return;
   }
   for (let i = 0; i < files.length; i += 1) {
-    fs.stat(`${dir}\\${files[i]}`, (err, stats) => {
+    fs.stat(path.join(dir, files[i]), (err, stats) => {
       if (err) {
         console.log(err);
         return;
